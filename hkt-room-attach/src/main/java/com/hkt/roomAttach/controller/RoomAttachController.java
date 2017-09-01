@@ -1,6 +1,7 @@
 package com.hkt.roomAttach.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -37,7 +38,7 @@ public class RoomAttachController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "/uploadFile.service", method = { RequestMethod.POST })
-	public String uploadfile(@RequestHeader HttpHeaders headers, @RequestBody AttachDto criteria,@RequestParam MultipartFile file){
+	public String uploadfile(@RequestHeader HttpHeaders headers,@RequestParam List<MultipartFile> files, @RequestParam Map<String, String> params){
 		 JSch jsch = new JSch();
 	        Session session = null;
 	        try {
@@ -49,7 +50,7 @@ public class RoomAttachController {
 	            Channel channel = session.openChannel("sftp");
 	            channel.connect();
 	            ChannelSftp sftpChannel = (ChannelSftp) channel;
-	            sftpChannel.put(file.getInputStream(), "/home/testUpload.jpg");
+	            sftpChannel.put(files.get(0).getInputStream(), "/home/testUpload.jpg");
 	            sftpChannel.exit();
 	            session.disconnect();
 	        } catch (JSchException e) {
