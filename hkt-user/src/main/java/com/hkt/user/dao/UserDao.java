@@ -53,12 +53,20 @@ public class UserDao extends JdbcDaoSupport {
 		try{
 			StringBuffer sql = new StringBuffer();
 
-			sql.append(" select * from user ");
+			sql.append(" select * from user_info ");
 			sql.append(" where username = '" + user.getUserName() + "'");
 
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql.toString());
 			if (!rows.isEmpty()) {
-				UserDto result = (UserDto) rows.get(0);
+				UserDto result = new UserDto();
+				Map row = rows.get(0);
+				
+				result.setUserName((String)row.get("username"));
+				result.setPassword((String)row.get("password"));
+				result.setFirstName((String)row.get("first_name"));
+				result.setLastName((String)row.get("last_name"));
+				result.setGender((String)row.get("gender"));
+				
 				if(!result.getPassword().equals(user.getPassword())){
 					user.setMsg("103");//wrong password
 					return user;
