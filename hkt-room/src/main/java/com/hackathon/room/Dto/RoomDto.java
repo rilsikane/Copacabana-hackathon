@@ -1,6 +1,7 @@
 package com.hackathon.room.Dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -15,7 +16,7 @@ public class RoomDto implements Serializable{
 	private String roomName;
 	private String address;
 	private String roomSize;
-	private String price;
+	private BigDecimal price;
 	private String tel;
 	private String deposit; //ค่ามัดจำ
 	private String roomAvail; //Y=ว่าง N=ไม่ว่าง
@@ -49,12 +50,7 @@ public class RoomDto implements Serializable{
 	public void setRoomSize(String roomSize) {
 		this.roomSize = roomSize;
 	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
+	
 	public String getTel() {
 		return tel;
 	}
@@ -90,6 +86,12 @@ public class RoomDto implements Serializable{
 	}
 	public void setLon(String lon) {
 		this.lon = lon;
+	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 	
 }
