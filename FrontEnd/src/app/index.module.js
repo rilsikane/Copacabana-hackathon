@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('hackathonRoom', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr','angularjs-facebook-sdk','wt.responsive']);
+    .module('hackathonRoom', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr','wt.responsive','angular-flexslider']);
 
 })();
