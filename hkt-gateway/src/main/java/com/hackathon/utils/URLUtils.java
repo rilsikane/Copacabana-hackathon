@@ -1,13 +1,28 @@
 package com.hackathon.utils;
 
-import org.apache.commons.lang.StringUtils;
-
 public class URLUtils {
 	public static String getEnpointService(String target) {
-		String enpointService = "http://mobile.optimussoft.com";//EndPointReader.getInstance().getConfig(GWSConstants.CONFIG_KEY.ENPOINT_SERVICE_URL);
-		if (StringUtils.endsWith(enpointService, GWSConstants.SLASH)) {
-			return enpointService + target;
+		
+		return getEndPoint(target);
+	}
+	private static String getEndPoint(String target){
+		String port = "8107";
+		String[] targets = target.split("\\.");
+		switch (targets[0]) {
+		case "room":
+			port = "8107";
+		break;
+		case "reservation":
+			port = "8207";
+		break;
+		case "attach":
+			port = "8307";
+		break;
+		
+		default:
+			break;
 		}
-		return enpointService + GWSConstants.SLASH + target;
+		
+		return "http://139.59.125.200:"+port+"/"+targets[1]+"."+targets[2];
 	}
 }
