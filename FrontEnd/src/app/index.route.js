@@ -40,6 +40,14 @@
           }
         }
       })
+      .state('app.payment',{
+        url: '/payment',
+        views:{
+          'app' :{
+             templateUrl: 'app/payment/payment.html',
+          }
+        }
+      })
       
 
 
