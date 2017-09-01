@@ -32,15 +32,11 @@
       <div class="row">
           <div class="col">
             <table wt-responsive-table>
-                <tr>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
+                <tr ng-repeat="x in rooms | orderBy : 'price'">
+                    <td><a ui-sref="app.reservation">{{x.roomName}}</a>
+                    <p>{{x.address | cut:false:100:' '}}</p></td>
+                    <td>{{x.tel}}</td>
+                    <td>{{x.price}}</td>
                 </tr>
           </table>
           </div>

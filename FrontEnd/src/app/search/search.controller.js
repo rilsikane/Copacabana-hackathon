@@ -9,6 +9,7 @@
   function SearchController($scope,ApiService) {
     $scope.priceRageList = [];
     $scope.searchData = {};
+    $scope.rooms =[];
 
 
 
@@ -22,6 +23,7 @@
       
 ApiService.postService($scope.searchData,"room.searchAvailRoom.service").then(function(result){
         console.log(result);
+        $scope.rooms = result;
       })
     }
 
