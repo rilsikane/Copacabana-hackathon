@@ -1,5 +1,6 @@
 package com.hackathon.room.dao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,15 +36,15 @@ public class RoomDao extends JdbcDaoSupport {
 			if (criteria != null) {
 				if (criteria.getPriceRange() != null && !"".equals(criteria.getPriceRange())) {
 					if ("1".equals(criteria.getPriceRange())) {
-						sql.append(" and to_number(price,'999G999') between 0 and 1000 ");
+						sql.append(" and price between 0 and 1000 ");
 					} else if ("2".equals(criteria.getPriceRange())) {
-						sql.append(" and to_number(price,'999G999') between 1001 and 3000 ");
+						sql.append(" and price between 1001 and 3000 ");
 					} else if ("3".equals(criteria.getPriceRange())) {
-						sql.append(" and to_number(price,'999G999') between 3001 and 6000 ");
+						sql.append(" and price between 3001 and 6000 ");
 					} else if ("4".equals(criteria.getPriceRange())) {
-						sql.append(" to_number(price,'999G999') between 6001 and 10000 ");
+						sql.append(" and price between 6001 and 10000 ");
 					} else if ("5".equals(criteria.getPriceRange())) {
-						sql.append(" to_number(price,'999G999') > 10000 ");
+						sql.append(" and price > 10000 ");
 					}
 				}
 			}
@@ -57,10 +58,12 @@ public class RoomDao extends JdbcDaoSupport {
 					result.setRoomName((String) row.get("room_name"));
 					result.setAddress((String) row.get("address"));
 					result.setRoomSize((String) row.get("room_size"));
-					result.setPrice((String) row.get("price"));
+					result.setPrice((BigDecimal) row.get("price"));
 					result.setTel((String) row.get("tel"));
 					result.setDeposit((String) row.get("deposit"));
 					result.setRoomAvail((String) row.get("roomavail"));
+					result.setLat((String) row.get("lat"));
+					result.setLon((String) row.get("long"));
 					resultList.add(result);
 				}
 
