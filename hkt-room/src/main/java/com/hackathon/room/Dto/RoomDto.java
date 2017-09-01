@@ -19,6 +19,8 @@ public class RoomDto implements Serializable{
 	private String tel;
 	private String deposit; //ค่ามัดจำ
 	private String roomAvail; //Y=ว่าง N=ไม่ว่าง
+	private String lat;
+	private String lon;
 	private String priceRange; 	//0-1000 = 1
 								//1001-6000 = 2
 								//6001-10000 = 3
@@ -76,6 +78,18 @@ public class RoomDto implements Serializable{
 	}
 	public void setPriceRange(String priceRange) {
 		this.priceRange = priceRange;
+	}
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLon() {
+		return lon;
+	}
+	public void setLon(String lon) {
+		this.lon = lon;
 	}
 	
 }

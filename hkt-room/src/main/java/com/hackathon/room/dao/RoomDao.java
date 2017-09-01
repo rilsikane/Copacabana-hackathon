@@ -61,6 +61,8 @@ public class RoomDao extends JdbcDaoSupport {
 					result.setTel((String) row.get("tel"));
 					result.setDeposit((String) row.get("deposit"));
 					result.setRoomAvail((String) row.get("roomavail"));
+					result.setLat((String) row.get("lat"));
+					result.setLon((String) row.get("long"));
 					resultList.add(result);
 				}
 

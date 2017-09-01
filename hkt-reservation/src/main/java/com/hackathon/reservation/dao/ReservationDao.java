@@ -27,11 +27,11 @@ public class ReservationDao extends JdbcDaoSupport {
 	public void reservationRoom(ReservationDto dto) {
 		List<ReservationDto> resultList = null;
 		try {
-			String sql = " INSERT INTO reservation(" + " reserve_id, room_id, user_no, approve_status) "
-					+ " VALUES (?, ?, ?, ?) ";
+			String sql = " INSERT INTO reservation(room_id, user_no, approve_status) "
+					+ " VALUES (?, ?, ?) ";
 
 
-			getJdbcTemplate().update(sql, dto.getReserveId(), dto.getRoomId(),
+			getJdbcTemplate().update(sql, dto.getRoomId(),
 					dto.getUserNo(), dto.getApproveStatus());
 
 		} catch (Exception e) {
