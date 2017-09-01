@@ -8,6 +8,8 @@
   /** @ngInject */
   function ReservationController($scope,$stateParams,ApiService) {
   	console.log($stateParams.room);
+  	// $scope.detail = [];
+  	$scope.detail = $stateParams.room;
   	$scope.slides = [];
   	ApiService.postService($stateParams.room,"attach.searchRoomAttach.service").then(function(result){
 	    
