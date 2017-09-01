@@ -1,0 +1,49 @@
+<div class="features-wrapper one">
+    <div class="container">
+      <div class="section-name one">
+        <h2>ค้นหา</h2>
+        <div class="short-text">
+          <h3>ค้นหาห้องตามช่วงราคา</h3>
+        </div>
+      </div>
+      <div class="row features">
+           <div class="col-md-3 right">
+            <label>ราคาเดือนละ <span class="required">*</span></label>
+           </div>
+           <div class="col-md-5">
+              <div class="form-group">
+                  <select ng-model="searchData.priceRange"  name="priceRange" class="form-control m-b">
+                    <option ng-repeat="val in priceRageList" value="{{val.id}}">{{val.value}}</option>
+                  </select>
+              </div>
+           </div>
+           <div>
+              <button type="button" class="btn btn-default" ng-click="searchRoom()">
+                  ค้นหา
+              </button>
+           </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <hr class="style13">
+            <h2>ผลการค้นหา</h2>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <table wt-responsive-table>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+          </table>
+          </div>
+      </div>
+    </div>
+  </div>
