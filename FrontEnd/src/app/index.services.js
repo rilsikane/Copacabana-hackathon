@@ -28,7 +28,7 @@
             })
             .success(function(data) {
               //LoadingService.hide();
-              deferred.resolve(data);
+              deferred.resolve(JSON.parse(data.result));
               //console.log('fetched this stuff from server:', data);
 
             })
