@@ -6,7 +6,13 @@
     .controller('PaymentController', PaymentController);
 
   /** @ngInject */
-  function PaymentController($scope) {
+  function PaymentController($scope,$http,ApiService,FileUploader) {
+  	
+  	$scope.uploadFile = function(){
+      ApiService.uploadFileToUrl($scope.fileToUpload);
+    };
+    
+    
     
   }
 

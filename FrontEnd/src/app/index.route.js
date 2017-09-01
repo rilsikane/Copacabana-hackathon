@@ -55,6 +55,7 @@
         views:{
           'app' :{
              templateUrl: 'app/payment/payment.html',
+             controller: 'PaymentController'
           }
         }
       })

@@ -79,10 +79,38 @@
 
         return deferred.promise;
     };
+
+      var uploadFileToUrl = function(data) {
+        // var data = {}; //file object 
+
+        var fd = new FormData();
+        fd.append('files', data);
+        fd.append('target',"attach.uploadFile.service");
+
+        $http.post("http://localhost:9080/gateway/service/post-file.service", fd, {
+            headers: {
+              'Content-Type': undefined
+            },
+            transformRequest: angular.identity,
+            responseType: "arraybuffer"
+          })
+          .then(function(response) {
+            var data = response.data;
+            var status = response.status;
+            console.log(data);
+          })
+          .catch(function(error) {
+            console.log(error.status);
+
+            // handle else calls
+          });
+      }
+    
      
     return {
       postService : postService,
-      postPrivateService : postPrivateService
+      postPrivateService : postPrivateService,
+      uploadFileToUrl:uploadFileToUrl
     };
   }
     function msgDialog()
