@@ -12,8 +12,7 @@
         url: '/app',
         abstract:true,
         templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+        controller: 'MainController'
       })
       .state('app.home',{
         url: '/home',

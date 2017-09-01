@@ -264,7 +264,6 @@ header {
 .section-name h5 {
   display: inline-block;
   position: relative;
-  z-index: 8888;
   padding: 0 15px;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
