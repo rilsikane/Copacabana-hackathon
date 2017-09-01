@@ -48,10 +48,7 @@ public class AppConfig {
 		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setName("greeting");
 		AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-		CorsFilter corsFilter = new CorsFilter();
-		registrationBean.addUrlPatterns("/gateway/private/service/*");
-		registrationBean.setFilter(corsFilter);
-		registrationBean.setOrder(1);
+		registrationBean.addUrlPatterns("/gateway/service/private/*");
 		registrationBean.setFilter(authenticationFilter);
 		registrationBean.setOrder(2);
 		return registrationBean;

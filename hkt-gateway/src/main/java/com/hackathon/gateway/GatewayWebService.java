@@ -37,7 +37,19 @@ public class GatewayWebService extends AbstractBaseWebService {
 	
 	@ResponseBody
 	@RequestMapping(value = "/post.service", method = { RequestMethod.POST }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE + GWSConstants.SEMI_COLON + GWSConstants.CHARSET_UTF_8)
-	public Object post(@RequestBody String params, @RequestHeader HttpHeaders headers, HttpServletRequest request) throws Exception {
+	public Object postPublic(@RequestBody String params, @RequestHeader HttpHeaders headers, HttpServletRequest request) throws Exception {
+		String decodedParam = params;
+		
+		LOG.info("Param : " + decodedParam);
+		Object objParam = mapper.readValue(decodedParam, Object.class);
+		final String target = BeanUtilsBean.getInstance().getProperty(objParam, GWSConstants.TARGET);
+		final String url = URLUtils.getEnpointService(target);
+		return super.makePostRequest(url, decodedParam, headers, String.class);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/private/post.service", method = { RequestMethod.POST }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE + GWSConstants.SEMI_COLON + GWSConstants.CHARSET_UTF_8)
+	public Object postPrivate(@RequestBody String params, @RequestHeader HttpHeaders headers, HttpServletRequest request) throws Exception {
 		String decodedParam = params;
 		
 		LOG.info("Param : " + decodedParam);
