@@ -33,7 +33,7 @@
           <div class="col">
             <table wt-responsive-table>
                 <tr ng-repeat="x in rooms | orderBy : 'price'">
-                    <td><a ui-sref="app.reservation">{{x.roomName}}</a>
+                    <td><a ui-sref="app.reservation({room:x})">{{x.roomName}}</a>
                     <p>{{x.address | cut:false:100:' '}}</p></td>
                     <td>{{x.tel}}</td>
                     <td>{{x.price}}</td>

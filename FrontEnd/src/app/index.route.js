@@ -33,10 +33,20 @@
         }
       })
       .state('app.reservation',{
-        url: '/reservation',
+        url: '/reservation/',
+        params: { 
+          // here we define default value for foo
+          // we also set squash to false, to force injecting
+          // even the default value into url
+          room: {
+
+          },
+          hiddenParam: 'YES',
+        },
         views:{
           'app' :{
              templateUrl: 'app/reservation/reservation.html',
+             controller:'ReservationController'
           }
         }
       })
