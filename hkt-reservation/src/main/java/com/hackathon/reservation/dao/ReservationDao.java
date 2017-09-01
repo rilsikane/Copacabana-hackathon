@@ -24,15 +24,22 @@ public class ReservationDao extends JdbcDaoSupport {
 		setDataSource(dataSource);
 	}
 
-	public void reservationRoom(ReservationDto dto) {
+	public void reservationRoom(ReservationDto dto) throws Exception{
 		List<ReservationDto> resultList = null;
 		try {
-			String sql = " INSERT INTO reservation(room_id, user_no, approve_status) "
-					+ " VALUES (?, ?, ?) ";
+			String sql = " INSERT INTO reservation(room_id, user_no, approve_status) " + " VALUES (?, ?, ?) ";
+			getJdbcTemplate().update(sql, dto.getRoomId(), dto.getUserNo(), dto.getApproveStatus());
 
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	}
 
-			getJdbcTemplate().update(sql, dto.getRoomId(),
-					dto.getUserNo(), dto.getApproveStatus());
+	public void updateRoomStatus(String roomId) throws Exception{
+		try {
+			String sql = " update room set roomavail ='N' where room_id='" + roomId + "'";
+			getJdbcTemplate().update(sql);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -26,8 +26,13 @@ public class ReservationController {
 		// criteria.setRoomId("1");
 		// criteria.setUserNo("1");
 		// criteria.setApproveStatus("N");
-		if (criteria != null) {
-			reservationService.reservRoom(criteria);
+		try {
+			if (criteria != null) {
+				reservationService.reservRoom(criteria);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

@@ -30,26 +30,28 @@ public class RoomAttachDao extends JdbcDaoSupport {
 		try {
 			StringBuffer sql = new StringBuffer();
 
-			sql.append(" select * from room_attach ");
-			sql.append(" where 1=1 ");
-			if (criteria != null) {
-				if (criteria.getRoomId() != null && !"".equals(criteria.getRoomId())) {
-					sql.append(" and room_id = '" + criteria.getRoomId() + "' ");
-				}
-			}
-
-			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql.toString());
-			if (!rows.isEmpty()) {
-				resultList = new ArrayList<AttachDto>();
-				for (Map row : rows) {
-					AttachDto result = new AttachDto();
-					result.setAttachId((String) row.get("attach_id"));
-					result.setRoomId((String) row.get("room_id"));
-					result.setUserNo((String) row.get("user_no"));
-					result.setAttachPath((String) row.get("attach_path"));
-					resultList.add(result);
+			if (criteria.getRoomId() != null && !"".equals(criteria.getRoomId())) {
+				sql.append(" select * from room_attach ");
+				sql.append(" where 1=1 ");
+				if (criteria != null) {
+					if (criteria.getRoomId() != null && !"".equals(criteria.getRoomId())) {
+						sql.append(" and room_id = '" + criteria.getRoomId() + "' ");
+					}
 				}
 
+				List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql.toString());
+				if (!rows.isEmpty()) {
+					resultList = new ArrayList<AttachDto>();
+					for (Map row : rows) {
+						AttachDto result = new AttachDto();
+						result.setAttachId((String) row.get("attach_id"));
+						result.setRoomId((String) row.get("room_id"));
+						result.setUserNo((String) row.get("user_no"));
+						result.setAttachPath((String) row.get("attach_path"));
+						resultList.add(result);
+					}
+
+				}
 			}
 
 		} catch (Exception e) {

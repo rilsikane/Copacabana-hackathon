@@ -66,10 +66,6 @@
 		    <artifactId>jsch</artifactId>
 		    <version>0.1.53</version>
 		</dependency>
-		
-		
-
-		
 	</dependencies>
 
 	<build>

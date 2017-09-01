@@ -41,7 +41,14 @@ public class RoomAttachController {
 	public String uploadfile(@RequestHeader HttpHeaders headers,@RequestParam List<MultipartFile> files, @RequestParam Map<String, String> params){
 		 JSch jsch = new JSch();
 	        Session session = null;
+	        String userNo = null;
+	        String reserveId = null;
+	        String ext = null;
 	        try {
+	        	reserveId = params.get("reserveId");
+	        	userNo = params.get("userNo");
+	        	ext = files.get(0).getOriginalFilename().split("\\.")[1];
+	        	
 	            session = jsch.getSession("root", "128.199.125.246", 22);
 	            session.setConfig("StrictHostKeyChecking", "no");
 	            session.setPassword("oms123456");
@@ -50,7 +57,9 @@ public class RoomAttachController {
 	            Channel channel = session.openChannel("sftp");
 	            channel.connect();
 	            ChannelSftp sftpChannel = (ChannelSftp) channel;
-	            sftpChannel.put(files.get(0).getInputStream(), "/home/testUpload.jpg");
+	            sftpChannel.mkdir("/home/slipAttach/");
+
+	            sftpChannel.put(files.get(0).getInputStream(), "/home/slipAttach/"+reserveId+"-"+userNo+"."+ext);
 	            sftpChannel.exit();
 	            session.disconnect();
 	        } catch (JSchException e) {
