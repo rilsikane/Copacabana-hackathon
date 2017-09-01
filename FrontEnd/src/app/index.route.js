@@ -32,6 +32,14 @@
           }
         }
       })
+      .state('app.reservation',{
+        url: '/reservation',
+        views:{
+          'app' :{
+             templateUrl: 'app/reservation/reservation.html',
+          }
+        }
+      })
       
 
 

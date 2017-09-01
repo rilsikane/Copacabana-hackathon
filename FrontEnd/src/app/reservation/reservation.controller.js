@@ -7,5 +7,7 @@
 
   /** @ngInject */
   function ReservationController($scope) {
+
+  }
     
-})();
+   })();
