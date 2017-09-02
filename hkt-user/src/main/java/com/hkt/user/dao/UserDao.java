@@ -48,9 +48,7 @@ public class UserDao extends JdbcDaoSupport {
 			if (!rows.isEmpty()) {
 				Map row = rows.get(0);
 				user.setUserNo((String) row.get("userNo"));
-				user.setMsg("101");
 			}
-
 			user.setMsg("100");
 		} catch (Exception e) {
 			e.printStackTrace();
