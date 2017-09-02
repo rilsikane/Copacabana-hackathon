@@ -15,18 +15,21 @@ public class URLUtils {
 		case "reservation":
 			port = "8207";
 		break;
-//		case "attach":
-//			port = "8307";
-//		break;
 		case "attach":
-			port = "9084";
-			break;
+			port = "8307";
+		break;
+		case "user":
+			port = "8407";
+		break;
+//		case "attach":
+//			port = "9084";
+//			break;
 		
 		default:
 			break;
 		}
 		
-//		return "http://139.59.125.200:"+port+"/"+targets[1]+"."+targets[2];
-		return "http://localhost:"+port+"/"+targets[1]+"."+targets[2];
+		return "http://139.59.125.200:"+port+"/"+targets[1]+"."+targets[2];
+//		return "http://localhost:"+port+"/"+targets[1]+"."+targets[2];
 	}
 }
