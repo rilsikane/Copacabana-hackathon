@@ -59,6 +59,16 @@
           }
         }
       })
+      .state('app.report',{
+        url: '/report',
+        views:{
+          'app' :{
+             templateUrl: 'app/report/report.html',
+             controller: 'ReportController'
+          }
+        }
+      })
+      
       
 
 
