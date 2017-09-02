@@ -1,5 +1,6 @@
 package com.hkt.user.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -28,8 +29,8 @@ public class UserDao extends JdbcDaoSupport {
 
 			StringBuffer sql = new StringBuffer();
 
-			sql.append(" select * from user ");
-			sql.append(" where username = " + user.getUserName());
+			sql.append(" select * from user_info ");
+			sql.append(" where username = '" + user.getUserName() + "'");
 
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql.toString());
 			if (!rows.isEmpty()) {
@@ -37,17 +38,18 @@ public class UserDao extends JdbcDaoSupport {
 				return user;
 			}
 
-			String sql2 = " INSERT INTO user(username, password, first_name, last_name, gender) VALUES (?, ?, ?, ? ,?) ";
+			String sql2 = " INSERT INTO user_info(username, password, first_name, last_name, gender, tel, facebook_token, google_token, address, role) VALUES (?, ?, ?, ? ,? ,? ,? ,?,?,?) ";
 			getJdbcTemplate().update(sql2, user.getUserName(), user.getPassword(), user.getFirstName(),
-					user.getLastName(), user.getGender());
+					user.getLastName(), user.getGender(), user.getTel(), user.getFacebookToken(), user.getGoogleToken(),
+					user.getAddress(), user.getRole());
 
 			sql = new StringBuffer();
-			sql.append(" select * from user ");
-			sql.append(" where username = " + user.getUserName());
+			sql.append(" select * from user_info ");
+			sql.append(" where username = '" + user.getUserName() + "'");
 			rows = getJdbcTemplate().queryForList(sql.toString());
 			if (!rows.isEmpty()) {
 				Map row = rows.get(0);
-				user.setUserNo((String) row.get("userNo"));
+				user.setUserNo((Integer) row.get("userNo"));
 			}
 			user.setMsg("100");
 		} catch (Exception e) {
@@ -79,7 +81,7 @@ public class UserDao extends JdbcDaoSupport {
 					result.setAddress((String) row.get("address"));
 					result.setTel((String) row.get("tel"));
 					result.setRole((String) row.get("role"));
-					result.setUserNo((String) row.get("userNo"));
+					result.setUserNo((Integer) row.get("userNo"));
 
 					if (!result.getPassword().equals(user.getPassword())) {
 						user.setMsg("104");// wrong token
@@ -108,7 +110,7 @@ public class UserDao extends JdbcDaoSupport {
 					result.setAddress((String) row.get("address"));
 					result.setTel((String) row.get("tel"));
 					result.setRole((String) row.get("role"));
-					result.setUserNo((String) row.get("userNo"));
+					result.setUserNo((Integer) row.get("userNo"));
 
 					if (!result.getPassword().equals(user.getPassword())) {
 						user.setMsg("104");// wrong token
