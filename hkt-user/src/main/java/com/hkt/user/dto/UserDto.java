@@ -15,6 +15,12 @@ public class UserDto implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String gender;
+	private String facebookToken;
+	private String googleToken;
+	private String address;
+	private String tel;
+	private String role;
+	private String userNo;
 	
 	private String msg;
 	
@@ -53,5 +59,42 @@ public class UserDto implements Serializable {
 	}
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getGoogleToken() {
+		return googleToken;
+	}
+	public void setGoogleToken(String googleToken) {
+		this.googleToken = googleToken;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getFacebookToken() {
+		return facebookToken;
+	}
+	public void setFacebookToken(String facebookToken) {
+		this.facebookToken = facebookToken;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
 	}
 }
