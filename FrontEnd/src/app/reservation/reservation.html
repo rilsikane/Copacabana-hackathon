@@ -1,11 +1,11 @@
 <div class="features-wrapper one">
     <div class="container">
       <div class="section-name one">
-        <h2>รายละเอียดห้อง</h2>
+        <h2>รายละเอียดห้อง : {{detail.roomName}}</h2>
           <div class="row">
               <table wt-responsive-table>
                 <tr>
-                    <td style="text-align: right;"><h4>ชื่อ : </h4></td>
+                    <td style="text-align: right;width: 200px"><h4>ชื่อ : </h4></td>
                     <td style="text-align: left;"><p>{{detail.roomName}}</p></td>
                 </tr>
                 <tr>
@@ -30,6 +30,8 @@
                 </tr>
           </table>
           </div>
+          <br>
+          <hr class="style13">
           <div class="row">
               <flex-slider class="carousel" slide="s in slides" animation="slide" animation-loop="false" item-width="385" item-margin="5" maxItems="5" minItems="1" touch="true" slideshow="false">
                 <li ng-click="imageClick(s)">
@@ -38,26 +40,21 @@
               </flex-slider>
           </div>
       </div>
-      <div class="features-wrapper one">
-    <div class="container">
+
       <div class="row features">
-        <div class="col-md-4 col-sm-6">
-          <div class="feature clearfix" style="background-color: rgba(127, 255, 0, 0.5);width: 75%">
-            <div class="icon_we"><i class="fa fa-bed"></i></div>          
-            <h4>จอง</h4>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-        </div>
-        <div class="col-md-4 col-sm-6 hidden-sm">
-          <div class="feature clearfix" style="background-color: rgba(255, 0, 0, 0.70);width: 75%">
-            <div class="icon_we"><i class="fa fa-repeat" aria-hidden="true"></i></div>  
-            <h4>กลับ</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="col-md-3 right">
+              <button type="button" class="btn btn-default" ng-click="">
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+                  จอง
+              </button>
+           </div>
+           <div class="col-md-6 right">
+              <button type="button" class="btn btn-default" ui-sref="app.search">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                  กลับ
+              </button>
+           </div>
+           </div>
     </div>
   </div>
 
