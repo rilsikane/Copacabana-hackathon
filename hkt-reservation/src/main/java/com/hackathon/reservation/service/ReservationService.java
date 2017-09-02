@@ -1,6 +1,8 @@
 package com.hackathon.reservation.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,5 +20,9 @@ public class ReservationService {
 	public void reservRoom(ReservationDto criteria) throws Exception{
 		reservationDao.reservationRoom(criteria);
 		reservationDao.updateRoomStatus(criteria.getRoomId());
+	}
+	
+	public List<ReservationDto> getReserveTrans(ReservationDto criteria){
+		return reservationDao.getReserveTrans(criteria);
 	}
 }
