@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig,uiGmapGoogleMapApiProvider) {
+  function config($logProvider, toastrConfig) {
 
     // Enable log
     $logProvider.debugEnabled(true);
@@ -23,14 +23,7 @@
      //  facebookConfigProvider.setOptions({
      //    status: true
      //  });
-    uiGmapGoogleMapApiProvider.configure({
-      client : 'com.oms.items',
-      v: '3.17',
-      libraries: 'weather,geometry,visualization'
-      key: 'AIzaSyAtVrNZfScv-DQ-sgbiguV8Ud0-UMoj9fI'
-      transport: 'http'
-      isGoogleMapsForWork: true
-    });
+
   }
 
 })();
