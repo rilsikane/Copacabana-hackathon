@@ -36,7 +36,7 @@
                     <td><a ui-sref="app.reservation({room:x})">{{x.roomName}}</a>
                     <p>{{x.address | cut:false:100:' '}}</p></td>
                     <td>{{x.tel}}</td>
-                    <td>{{x.price}}</td>
+                    <td>{{x.price | number:0}}</td>
                 </tr>
           </table>
           </div>
