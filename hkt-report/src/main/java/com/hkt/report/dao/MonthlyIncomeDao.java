@@ -31,7 +31,7 @@ public class MonthlyIncomeDao extends JdbcDaoSupport{
 
 			sql.append(" select * from monthly_income ");
 			sql.append(" where 1=1 ");
-			
+			sql.append(" and user_no = '"+criteria.getUserNo()+"'");
 //			if (criteria != null) {
 //				if (criteria.getPriceRange() != null && !"".equals(criteria.getPriceRange())) {
 //					if ("1".equals(criteria.getPriceRange())) {
@@ -57,6 +57,7 @@ public class MonthlyIncomeDao extends JdbcDaoSupport{
 					result.setMonth((String) row.get("month"));
 					result.setYear((String) row.get("year"));
 					result.setIncome((BigDecimal) row.get("income"));
+					result.setUserNo((String)row.get("user_no"));
 					resultList.add(result);
 				}
 			}

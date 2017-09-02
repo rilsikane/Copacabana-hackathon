@@ -16,6 +16,7 @@ public class MonthlyReportDto implements Serializable{
 	private String month;
 	private String year;
 	private BigDecimal income;
+	private String userNo;
 	
 	public Integer getId() {
 		return id;
@@ -40,5 +41,11 @@ public class MonthlyReportDto implements Serializable{
 	}
 	public void setIncome(BigDecimal income) {
 		this.income = income;
+	}
+	public String getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
 	}
 }
