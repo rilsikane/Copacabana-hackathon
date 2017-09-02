@@ -18,8 +18,17 @@
           controller: 'ModalInstanceCtrl',
           size: 'lg'
         });
-
-      
+    }
+    $scope.logout = function(){
+      if($rootScope.user.facebookToken){
+        facebookService.logout();
+        $localstorage.remove("user");
+        $rootScope.user = undefined;
+      }else{
+         facebookService.logout();
+        $localstorage.remove("user");
+        $rootScope.user = undefined;
+      }
     }
 
     $scope.init = function(){
@@ -75,19 +84,33 @@
     $scope.init();
     
   }
-   function ModalInstanceCtrl($scope,facebookService,$uibModalInstance,$uibModal){
+   function ModalInstanceCtrl($scope,facebookService,$uibModalInstance,$uibModal,ApiService,$localstorage, $rootScope){
       $scope.facebookLogin = function(){
          facebookService.login().then(function(result){
             console.log("FB-Rsult"+result.authResponse.userID);
-             $uibModalInstance.dismiss('cancel');
-             var modalInstance = $uibModal.open({
-              animation: true,
-              templateUrl: 'signUpModal.html',
-              controller: 'SignUpModalInstanceCtrl',
-              size: 'lg'
+            var param = {};
+            param.facebookToken = result.authResponse.userID; 
+            ApiService.postService(param,"user.login.service").then(function(result){ 
+                console.log(result); 
+                if(result.userName){
+                   $localstorage.setObject("user",result);
+                   $rootScope.user = result;
+                   $uibModalInstance.dismiss('cancel');
+                }else{
+                  $uibModalInstance.dismiss('cancel');
+                   var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'signUpModal.html',
+                    controller: 'SignUpModalInstanceCtrl',
+                    size: 'lg'
+                  });
+                }
+               
             });
 
          });
+      }
+      $scope.googleLogin = function(){
       }
    }
    function SignUpModalInstanceCtrl($scope,facebookService,$uibModalInstance,$uibModal,ApiService,msgDialog,$localstorage,$rootScope){

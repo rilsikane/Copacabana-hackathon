@@ -10,6 +10,7 @@
   	facebookConfig.init().then(function(){
 	    console.log('Facebook SDK is loaded.');
 	 });
+    
 
   }
 

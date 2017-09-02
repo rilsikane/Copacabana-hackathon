@@ -11,7 +11,7 @@
     $scope.payment =[];
 
    	$scope.searchReport = function(){
-	ApiService.postService($scope.searchData,"report.getMonthlyReport.service").then(function(result){
+	   ApiService.postService($scope.searchData,"report.getMonthlyReport.service").then(function(result){
         console.log(result);
       })
     }

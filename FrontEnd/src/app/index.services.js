@@ -6,6 +6,7 @@
     .factory('ApiService',ApiServices)
     .factory('msgDialog',msgDialog)
     .factory('$localstorage',$localstorage)
+    .factory('GPlusAuthService',GPlusAuthService)
 
   /** @ngInject */
   function ApiServices($window, $http, $q, $rootScope,$timeout) {
@@ -195,8 +196,32 @@
         getObject: function(key) {
           return JSON.parse($window.localStorage[key] || '{}');
         },
+        remove:function(key){
+          $window.localStorage.removeItem(key);
+        }
         
       }
+    }
+     function GPlusAuthService($q, $window,gapi) {
+        return {
+            signIn: function () {
+              var defered = $q.defer();
+              $window.signinCallback = function (response) {
+                  $window.signinCallback = undefined;
+                  defered.resolve(response);
+              };
+
+              gapi.auth.signIn({
+                  clientid: "123456789.apps.googleusercontent.com",
+                  cookiepolicy: "single_host_origin",
+                  requestvisibleactions: "http://schemas.google.com/AddActivity",
+                  scope: "https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read",
+                  callback: "signinCallback"
+
+              }) 
+              return defered.promise;
+          }
+        }
     }
 
 })();
