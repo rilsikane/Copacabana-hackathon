@@ -1,23 +1,23 @@
 <div class="features-wrapper one">
     <div class="container">
       <div class="section-name one">
-        <h2>รายงานค่าใช้จ่ายประจำเดือน</h2>
+        <h2>รายงานรายรับประจำเดือน</h2>
         <br>
           <section>
           <table class="table table-bordered">
           <tr>
             <th>เดือน</th>
-            <th>ปี</th>
+            <th>ปี(ค.ศ.)</th>
             <th>ยอดเงิน</th>
           </tr>
-          <tr>
-            <td>{{}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
+          <tr ng-repeat="p in payment">
+            <td>{{p.month | date : 'MMMM'}}</td>
+            <td>{{p.year}}</td>
+            <td style="text-align: right;">{{p.income | number:0}}</td>
           </tr>
           <tr>
-          <td colspan="2">ยอดเงินรวม</td>
-          <td>x,xxx</td>
+          <td style="text-align: right;" colspan="2">ยอดเงินรวม</td>
+          <td style="text-align: right;">{{total | number:0}}</td>
           </tr>
         </table>
         </section>

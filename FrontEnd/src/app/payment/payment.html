@@ -7,21 +7,21 @@
 		<table wt-responsive-table>
                 <tr>
                     <td>จ่ายไปยังห้อง :</td>
-                    <td>{{}}</td>
+                    <td>{{trans[0].roomName}}</td>
                 </tr>
                 <tr>
                     <td>จ่ายโดย :</td>
-                    <td>{{}}</td>
+                    <td>{{trans[0].userFirstLastName}}</td>
                 </tr>
                 <tr>
                     <td>ยอดเงินของท่านคือ :</td>
-                    <td>{{}}</td>
+                    <td>{{trans[0].price | number:0}} บาท</td>
                 </tr>
           </table>
         <hr class="style14">
-        <input type="file" file-model="fileToUpload"/>
+        <input class="btn btn-default" type="file" file-model="fileToUpload"/>
 
-        <button ng-click="uploadFile()">upload me</button>
+        <button class="btn btn-default" ng-click="uploadFile(trans[0].reserveId,trans[0].userNo)">upload me</button>
 
     </div>
   </div>

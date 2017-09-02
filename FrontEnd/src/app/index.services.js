@@ -82,14 +82,16 @@
         return deferred.promise;
     };
 
-      var uploadFileToUrl = function(data) {
+      var uploadFileToUrl = function(data,files) {
         // var data = {}; //file object 
-
+        var deferred = $q.defer();
         var fd = new FormData();
-        fd.append('files', data);
+        fd.append('files', files);
+        fd.append('reserveId', data.reserveId);
+        fd.append('userNo', data.userNo);
         fd.append('target',"attach.uploadFile.service");
 
-        $http.post("http://localhost:9080/gateway/service/post-file.service", fd, {
+        $http.post("http://174.138.25.181:8007/gateway/service/post-file.service", fd, {
             headers: {
               'Content-Type': undefined
             },
@@ -100,12 +102,14 @@
             var data = response.data;
             var status = response.status;
             console.log(data);
+             deferred.resolve(data);
           })
           .catch(function(error) {
             console.log(error.status);
-
+             deferred.reject(error) ;
             // handle else calls
           });
+        return deferred.promise;
       }
     
      

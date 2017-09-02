@@ -82,14 +82,11 @@ public class UserDao extends JdbcDaoSupport {
 					result.setTel((String) row.get("tel"));
 					result.setRole((String) row.get("role"));
 					result.setUserNo((Integer) row.get("userNo"));
+					result.setFacebookToken((String) row.get("facebook_token"));
 
-					if (!result.getPassword().equals(user.getPassword())) {
-						user.setMsg("104");// wrong token
-						return user;
-					} else {
-						result.setMsg("100");
-						return result;
-					}
+					result.setMsg("100");
+					return result;
+
 				} else {
 					user.setMsg("104");// wrong token
 					return user;
@@ -111,14 +108,10 @@ public class UserDao extends JdbcDaoSupport {
 					result.setTel((String) row.get("tel"));
 					result.setRole((String) row.get("role"));
 					result.setUserNo((Integer) row.get("userNo"));
+					result.setGoogleToken((String) row.get("google_token"));
 
-					if (!result.getPassword().equals(user.getPassword())) {
-						user.setMsg("104");// wrong token
-						return user;
-					} else {
-						result.setMsg("100");
-						return result;
-					}
+					result.setMsg("100");
+					return result;
 				} else {
 					user.setMsg("104");// wrong token
 					return user;
