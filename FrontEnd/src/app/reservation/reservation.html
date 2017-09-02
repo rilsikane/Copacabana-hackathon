@@ -31,9 +31,9 @@
           </table>
           </div>
           <div class="row">
-              <flex-slider class="carousel" slide="s in slides" animation="slide" animation-loop="false" item-width="210" item-margin="5">
-                <li>
-                  <img ng-src="{{s}}">
+              <flex-slider class="carousel" slide="s in slides" animation="slide" animation-loop="false" item-width="385" item-margin="5" maxItems="5" minItems="1" touch="true" slideshow="false">
+                <li ng-click="imageClick(s)">
+                  <a><img err-src="/assets/img/No_Image.gif"  ng-src="{{s}}"></a>
                 </li>
               </flex-slider>
           </div>
@@ -60,3 +60,13 @@
   </div>
     </div>
   </div>
+
+  <script type="text/ng-template" id="imagePopup.html">
+    
+    <div class="modal-body" id="modal-body">
+      <div class="col" style="text-align:center">
+          <img err-src="/assets/img/No_Image.gif" ng-src="{{selectImg}}" style="max-width: 100%"/>
+      </div>
+    </div>
+    
+</script>
