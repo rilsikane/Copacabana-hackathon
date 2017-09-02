@@ -20,9 +20,22 @@
             </li>
            
         </ul>
-        <ul class="nav navbar-nav new-menu pull-right">
-           <li class="pull-right">
+        <ul class="nav navbar-nav new-menu pull-right" style="margin-right:50px">
+           <li class="pull-right" ng-if="!user.userName">
                 <button ng-click="login()" class="btn btn-link" type="button">Login</button>
+            </li>
+            <li class="pull-right" ng-if="user.userName">
+               <afb:profile:pic type="square" width="40" height="40" uid="{{user.facebookToken}}"></afb:profile:pic>
+              
+            </li>
+            <li class="dropdown" uib-dropdown auto-close="outsideClick">
+              <a class="dropdown-toggle" uib-dropdown-toggle toggle-event="mouseover" href="#">{{user.userName}}<b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
+                <li><a tabindex="-1" href="#"> Profile </a></li>
+                <li><a tabindex="-1" href="#"> History </a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#"> Log Out </a></li>
+              </ul>
             </li>
         </ul>
 	</div>

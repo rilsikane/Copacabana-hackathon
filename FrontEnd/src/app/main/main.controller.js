@@ -8,8 +8,9 @@
     .controller('SignUpModalInstanceCtrl',SignUpModalInstanceCtrl);
 
   /** @ngInject */
-  function MainController($uibModal,$scope) {
-
+  function MainController($uibModal,$scope,$rootScope,$localstorage,facebookService) {
+      $rootScope.user = $localstorage.getObject("user")||{};
+      
       $scope.login = function(){
          var modalInstance = $uibModal.open({
           animation: true,
@@ -89,7 +90,7 @@
          });
       }
    }
-   function SignUpModalInstanceCtrl($scope,facebookService,$uibModalInstance,$uibModal,ApiService,msgDialog){
+   function SignUpModalInstanceCtrl($scope,facebookService,$uibModalInstance,$uibModal,ApiService,msgDialog,$localstorage,$rootScope){
     $scope.signUpForm = {};
      facebookService.api('/me',{fields: 'name,email'}).then(function (response){
         console.log("FB-Rsult"+response);
@@ -103,6 +104,8 @@
          ApiService.postService($scope.signUpForm,"user.register.service").then(function(result){
             console.log(result);
             if(result.msg=="100"){
+              $localstorage.setObject("user",result);
+              $rootScope.user = result;
                swal(
                   "สมัครสมาชิกเรียบร้อย",
                   "คุณได้สมัครสมาชิกเรียบร้อย",
@@ -115,17 +118,13 @@
                   "เกิดข้อผิดพลาด",
                   "มีข้อมูล User Name นี้อยุ่ในระบบแล้ว",
                   'error'
-                ).then(function(){
-                  $uibModalInstance.dismiss('cancel');
-                })
+                )
             }else if (result.msg=="200"){
                swal(
                   "เกิดข้อผิดพลาด",
                   "ไม่สามารถติดต่อ Server ได้",
                   'error'
-                ).then(function(){
-                  $uibModalInstance.dismiss('cancel');
-                })
+                )
             }
             
           })
