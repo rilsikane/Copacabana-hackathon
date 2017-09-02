@@ -43,7 +43,7 @@
 
       <div class="row features">
           <div class="col-md-3 right">
-              <button type="button" class="btn btn-default btn-info" ng-click="reserveRoom()">
+              <button type="button" class="btn btn-default btn-info" ng-click="reserveRoom()" ng-if="user.userName">
                 <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
                   จอง
               </button>

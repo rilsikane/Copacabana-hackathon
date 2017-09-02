@@ -11,9 +11,9 @@
     // Enable log
     $logProvider.debugEnabled(true);
 
-     facebookConfigProvider.setAppId(272847096453655);
+     facebookConfigProvider.setAppId(410637699129621);
       facebookConfigProvider.setLanguage('en-US');
-      facebookConfigProvider.setDebug(true);
+      facebookConfigProvider.setDebug(false);
 
       // When autoInit is setted to false you need to initialize
       // the facebookConfig service manually inside a run block.

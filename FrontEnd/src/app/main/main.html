@@ -12,10 +12,10 @@
             <li>
               	<a ui-sref="app.search">Search</a>
             </li>
-            <li>
+            <li ng-if="user.userName">
               	<a ui-sref="app.payment">Payment</a>
             </li>
-            <li>
+            <li ng-if="user.userName">
               	<a ui-sref="app.report">Report</a>
             </li>
            

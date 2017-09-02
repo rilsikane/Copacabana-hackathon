@@ -4,7 +4,7 @@
         	<h2>payment</h2>
         </div>
 <hr class="style14">
-		<table wt-responsive-table>
+		<table wt-responsive-table ng-if="trans && trans.length >0">
                 <tr>
                     <td>จ่ายไปยังห้อง :</td>
                     <td>{{trans[0].roomName}}</td>
@@ -19,9 +19,11 @@
                 </tr>
           </table>
         <hr class="style14">
-        <input class="btn btn-default" type="file" file-model="fileToUpload"/>
+        <input ng-if="trans && trans.length >0" class="btn btn-default" type="file" file-model="fileToUpload"/>
 
-        <button class="btn btn-default" ng-click="uploadFile(trans[0].reserveId,trans[0].userNo)">upload me</button>
+        <button ng-if="trans && trans.length >0" class="btn btn-default" ng-click="uploadFile(trans[0].reserveId,trans[0].userNo)">upload me</button>
+
+        <h2 style="float:center" ng-if="!(trans && trans.length >0)">ยังไม่มีข้อมูลการจ่ายเงิน</h2>
 
     </div>
   </div>

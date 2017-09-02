@@ -12,6 +12,7 @@
       $rootScope.user = $localstorage.getObject("user")||{};
       
       $scope.login = function(){
+        facebookService.logout();
          var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'myModalContent.html',
