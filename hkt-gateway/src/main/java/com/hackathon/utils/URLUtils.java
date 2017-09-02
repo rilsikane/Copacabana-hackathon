@@ -24,7 +24,9 @@ public class URLUtils {
 //		case "attach":
 //			port = "9084";
 //			break;
-		
+		case "report":
+			port = "8507";
+		break;
 		default:
 			break;
 		}
