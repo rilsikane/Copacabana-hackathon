@@ -1,6 +1,7 @@
 package com.hkt.user.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -20,7 +21,7 @@ public class UserDto implements Serializable {
 	private String address;
 	private String tel;
 	private String role;
-	private String userNo;
+	private Integer userNo;
 	
 	private String msg;
 	
@@ -91,10 +92,10 @@ public class UserDto implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getUserNo() {
+	public Integer getUserNo() {
 		return userNo;
 	}
-	public void setUserNo(String userNo) {
+	public void setUserNo(Integer userNo) {
 		this.userNo = userNo;
 	}
 }

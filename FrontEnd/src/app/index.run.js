@@ -6,7 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log,$rootScope) {
+  function runBlock($log,$rootScope,facebookConfig) {
   // 	facebookConfig.init().then(function(){
 	 //    console.log('Facebook SDK is loaded.');
 	 // });
@@ -33,8 +33,9 @@
   //       }
   //     };
 
-  //     facebookService.Event.subscribe('auth.statusChange', statusHandler);
-  //   });
+      facebookConfig.init().then(function(){
+        console.log('Facebook SDK is loaded.');
+      });
   }
 
 })();

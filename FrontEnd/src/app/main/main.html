@@ -69,7 +69,7 @@
         </div> 
         <div class="logmod__alter">
           <div class="logmod__alter-container">
-            <a href="#" class="connect facebook">
+            <a ng-click="facebookLogin()" href="#" class="connect facebook">
               <div class="connect__icon">
                 <i class="fa fa-facebook"></i>
               </div>
@@ -88,6 +88,55 @@
             </a>
           </div>
         </div>
+      </div>
+    </div>
+    
+</script>
+<script type="text/ng-template" id="signUpModal.html">
+    
+    <div class="modal-body" id="modal-body">
+      <div class="col">
+        <div class="logmod__form">
+          <form accept-charset="utf-8" class="simform">
+            <div class="sminputs">
+              <div class="input full">
+                <label class="string optional" for="user-name">Username*</label>
+                <input class="string optional" maxlength="255" id="user-email"  type="email" size="50" ng-model="signUpForm.userName"/>
+              </div>
+            </div>
+            <div class="sminputs">
+              <div class="input string optional">
+                <label class="string optional" for="user-pw">Password *</label>
+                <input class="string optional" maxlength="255" id="user-pw" type="text" size="50" ng-model="signUpForm.password"/>
+              </div>
+              <div class="input string optional">
+                <label class="string optional" for="user-pw-repeat">Repeat password *</label>
+                <input class="string optional" maxlength="255" id="user-pw-repeat" type="text" size="50" ng-model="signUpForm.repeatPassword"/>
+              </div>
+            </div>
+            <div class="sminputs">
+              <div class="input string optional">
+                <label class="string optional" for="user-pw">First Name *</label>
+                <input class="string optional" maxlength="255" id="user-pw" type="text" size="50" ng-model="signUpForm.firstName"/>
+              </div>
+              <div class="input string optional">
+                <label class="string optional" for="user-pw-repeat">Last Name *</label>
+                <input class="string optional" maxlength="255" id="user-pw-repeat" type="text" size="50" ng-model="signUpForm.lastName"/>
+              </div>
+            </div>
+            <div class="sminputs">
+              <div class="input string optional">
+                <label class="string optional">Mobile *</label>
+                <input class="string optional" maxlength="255" id="user-pw" placeholder="Mobile" type="text" size="50" ng-model="tel"/>
+              </div>
+            </div>
+            <div class="simform__actions">
+              <button class="sumbit" name="commit" ng-click="signUp()">Create Account</button>
+              <span class="simform__actions-sidetext">By creating an account you agree to our <a class="special" href="#" target="_blank" role="link">Terms & Privacy</a></span>
+            </div> 
+          </form>
+        </div> 
+        
       </div>
     </div>
     
